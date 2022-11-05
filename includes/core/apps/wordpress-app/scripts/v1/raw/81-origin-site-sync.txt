@@ -92,7 +92,8 @@ else
 fi
 cat > ~/dbimport-$domain.sql <<QUERY
 create database $mysql_new_db;
-GRANT ALL ON $mysql_new_db.* TO '\''$mysql_user'\''@'\''localhost'\'' IDENTIFIED BY '\''$mysql_pass'\'' WITH GRANT OPTION;
+CREATE USER '\''$mysql_user'\''@'\''localhost'\'' IDENTIFIED BY '\''$mysql_pass'\'';
+GRANT ALL ON $mysql_new_db.* TO '\''$mysql_user'\''@'\''localhost'\'' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 QUERY
 # sync sql files to destination
